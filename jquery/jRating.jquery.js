@@ -137,8 +137,13 @@
 				mouseleave : function(){
 					$("p.jRatingInfos").remove();
 				},
-				click : function(e){
-                    var element = this;
+				vclick : function(e){
+                    			var element = this;
+
+					var realOffsetLeft = findRealLeft(this);
+					var relativeX = e.pageX - realOffsetLeft;
+					if(opts.step) newWidth = Math.floor(relativeX/starWidth)*starWidth + starWidth;
+					else newWidth = relativeX;
 
 					/*set vars*/
 					hasRated = true;
